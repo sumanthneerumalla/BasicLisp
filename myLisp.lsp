@@ -134,3 +134,12 @@
 (format t "Searching for numbers in (4 6 1 8 0.5 12) >= 1 and <= than 8 : ~a ~%"  
 	(rangeOfList aList 1 8)
 )
+
+(defun approximate-pi (n)
+  (/ (loop repeat n count (<= (abs (complex (random 1.0) (random 1.0))) 1.0)) n 0.25))
+ 
+ (format t "Approximating pi using Monte Carlo with n size: ~%" ) 
+(dolist (n (loop repeat 5 for n = 1000 then (* n 10) collect n))
+  (format t "~%~8d -> ~f" n (approximate-pi n)))
+
+ 
