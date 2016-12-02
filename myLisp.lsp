@@ -16,21 +16,44 @@
 (format t "Calculating the volume of a sphere with radius of 4: ~a ~%" myvolume)
 
 
-(defun quadratic (A B C)
+;two separate functions to calculate the two different roots because I couldn't figure out 
+;how to use what the values function returns
+(defun quadratic1 (A B C)
   (cond ((= A 0) (string "Not a quadratic equation."))
     (t
     (let ((D (- (* B B) (* 4 A C))))
       (cond ((= D 0) (concatenate 'string "x = " (write-to-string (/ (+ (- B) (sqrt D)) (* 2 A)))))
         (t
-        (values (concatenate 'string "x1 = " (write-to-string (/ (+ (- B) (sqrt D)) (* 2 A))))
-                (concatenate 'string "x2 = " (write-to-string (/ (- (- B) (sqrt D)) (* 2 A))))))))))
+			(values (concatenate 'string "x1 = " (write-to-string (/ (+ (- B) (sqrt D)) (* 2 A))))
+                
+			)			
+		)
+		)
+	)
+	)
+	)
+)
+
+(defun quadratic2 (A B C)
+  (cond ((= A 0) (string "Not a quadratic equation."))
+    (t
+    (let ((D (- (* B B) (* 4 A C))))
+      (cond ((= D 0) (concatenate 'string "x = " (write-to-string (/ (+ (- B) (sqrt D)) (* 2 A)))))
+        (t
+			(values 
+                (concatenate 'string "x2 = " (write-to-string (/ (- (- B) (sqrt D)) (* 2 A))))
+			)	
+		)
+		)
+	)
+	)
+	)
 )
 
 
-(setq roots
-	(quadratic 10 7 1)
-)
-(format t "Calculating the roots of equation 10x^2 + 7x + 1: ~a ~%" (list (quadratic 10 7 1)))
+(format t "The first root of equation 10x^2 + 7x + 1:  ~a  ~%"   (quadratic1 10 7 1))
+(format t "The second root of equation 10x^2 + 7x + 1:  ~a  ~%"   (quadratic2 10 7 1))
+
 
 
 ;this is an alternative to the recursive implementation of getmin
