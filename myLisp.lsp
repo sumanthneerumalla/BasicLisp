@@ -88,9 +88,28 @@
 
 
 
+(defun list< (a b)
+  (cond
+    ((or (null a)(null b)) nil)
+    (( < a (car b)) (list< a (cdr b)))
+    (t(cons (car b) (list< a (cdr b))))))
 
-
-; (defun minMax (aList)
-	; (list (apply 'min aList)  (apply 'max aList)
-	; )
-; 
+(defun list>= (a b)
+  (cond
+    ((or ( null a)(null b)) nil)
+    (( >= a (car b)) (list>= a (cdr b)))
+    (t(cons (car b) (list>= a (cdr b))))))
+	
+(defun qsort (L)
+  (cond
+    ((null L) nil)
+    (t
+      (append
+        (qsort (list< (car L) (cdr L)))
+        (cons (car L) nil) 
+        (qsort (list>= (car L) (cdr L)))))))
+	
+	
+(format t "Using quick sort on list (4 6 1 8 0.5 12) results in : ~a ~%"  
+	(qsort aList)
+)
