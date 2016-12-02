@@ -85,6 +85,9 @@
 (format t "The maximum of list (4 6 1 8 0.5 12) is : ~a ~%"  
 	(getmax (car aList) aList)
 )
+(format t "The list containing the max and min of the list (4 6 1 8 0.5 12) is : ~a ~%"  
+	(list (getmin (car aList) aList) (getmax (car aList) aList))
+)
 
 
 
@@ -112,4 +115,22 @@
 	
 (format t "Using quick sort on list (4 6 1 8 0.5 12) results in : ~a ~%"  
 	(qsort aList)
+)
+
+(defun rangeOfList (someList lowerbound upperbound)
+	(setq totalCount 0)
+	
+	(loop for each in someList
+		do (
+			if (>= each lowerbound)
+				;nested if statement
+				(if (<= each upperbound)
+					(setq totalCount (+ totalCount 1))
+				)
+		)
+	)
+	totalCount
+)
+(format t "Searching for numbers in (4 6 1 8 0.5 12) >= 1 and <= than 8 : ~a ~%"  
+	(rangeOfList aList 1 8)
 )
